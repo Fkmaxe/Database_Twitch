@@ -1,0 +1,23 @@
+//log//
+Création de la table users, création des colonnes :
+													-userId, integer primary key auto_increment.
+													-username, VARCHAR(25)
+
+Création trigger Update et Insert pour table users pour limiter les valeurs du username entre 4 et 25 caractère (Si j'ai bien compris comment fonctionne les triggers en tt cas)
+	Explication du script :
+			Si la nb de caractères est <=4 ou >=25 alors relève l'exception 45000 qui empêche la nouvelle valeur d'être inséré et affiche le message stipuler en dessous.
+
+Création de la table userInfo, primarykey userId references users.userId
+
+Création table UserBillingAddress, primarykey userId references users.userId
+Création table channel, primarykey username references users.username
+//
+
+//Random Note//			
+Je me suis posé la question de savoir si c'était un problème pour les userId car cela aurait limité le nombre possible mais j'ignore so le char_length s'applique aussi sur les intégrales.
+Si oui, on a quand même 25^10-4^10 possibilité d'ID (si mes calculs sont bons, et ils sont surement faux)
+
+On pourrait utiliser un trigger sur userInfo.birthdate pour empecher que quelqu'un de moins de 13 ans s'inscrive mais j'ai plus de cerveau atm.
+
+J'invite à la vérification des erreurs car il doit y en avoir
+//
